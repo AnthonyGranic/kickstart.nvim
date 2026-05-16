@@ -23,7 +23,11 @@ vim.o.smartcase = true
 
 vim.o.signcolumn = 'yes' -- always show the gutter so text doesn't jump
 vim.o.updatetime = 250 -- faster CursorHold / swapfile writes
-vim.o.timeoutlen = 300 -- snappier which-key popup
+-- How long vim waits for the next key in a multi-key sequence (e.g. `saiw)`).
+-- 300ms is the kickstart default but cuts off slower typing — `s` would fire
+-- its <Nop> before you reach the `a`. which-key has its own delay=0 so this
+-- doesn't slow down the popup.
+vim.o.timeoutlen = 1000
 
 -- Splits open where you'd expect them.
 vim.o.splitright = true
