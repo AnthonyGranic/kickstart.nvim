@@ -33,13 +33,15 @@ Personal Neovim configuration. Forked from [kickstart.nvim](https://github.com/n
 │       ├── telescope.lua    # Fuzzy finder + extensions
 │       ├── treesitter.lua   # Syntax / indent / textobjects
 │       ├── trouble.lua      # Diagnostics / refs list UI
-│       └── ui.lua           # which-key, todo-comments, autopairs, guess-indent
+│       ├── ui.lua           # which-key, todo-comments, autopairs, guess-indent
+│       └── custom/          # Local "plugins" written in this repo (no GitHub source)
+│           └── daily_notes.lua  # <leader>d / <leader>j / <leader>sN + Jot floating window
 ├── COMMANDS.md              # Keymap & command reference
 ├── lazy-lock.json           # Pinned plugin versions (commit this!)
 └── README.md
 ```
 
-`lua/plugins/` is auto-imported by `lazy.nvim` — drop a new file in there to add a plugin.
+`lua/plugins/` is auto-imported by `lazy.nvim` — drop a new file in there to add a plugin. The `custom/` subdir is imported separately (see `lua/config/lazy.lua`) and is the home for in-repo "plugins" you write yourself.
 
 ## Installation
 
@@ -76,6 +78,28 @@ return {
 ```
 
 That's it — `lazy.nvim` picks it up on the next start.
+
+### Adding a local "plugin" (no GitHub source)
+
+For config-as-plugin modules (custom commands, keymaps, autocmds grouped as a feature), drop a file in `lua/plugins/custom/`:
+
+```lua
+-- lua/plugins/custom/my-feature.lua
+---@module 'lazy'
+---@type LazySpec
+return {
+  {
+    'my-feature',                       -- arbitrary name
+    dir = vim.fn.stdpath 'config',      -- points at an existing dir so lazy doesn't try to clone
+    lazy = false,                       -- or use `event`, `keys`, etc. to lazy-load
+    config = function()
+      -- register commands, keymaps, autocmds…
+    end,
+  },
+}
+```
+
+See `lua/plugins/custom/daily_notes.lua` for a working example.
 
 ## Adding an LSP server
 

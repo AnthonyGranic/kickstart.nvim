@@ -8,6 +8,10 @@ vim.g.maplocalleader = ' '
 -- Lets icon-using plugins (which-key, mini.statusline, etc.) draw glyphs.
 vim.g.have_nerd_font = true
 
+-- Force Eastern time for os.date / strftime — this machine's system clock is UTC.
+-- Affects daily-notes timestamps + anything else that formats local time.
+vim.env.TZ = 'America/New_York'
+
 -- Line numbers: absolute current + relative for fast j/k motions.
 vim.o.number = true
 vim.o.relativenumber = true

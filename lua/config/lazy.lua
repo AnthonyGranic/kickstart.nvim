@@ -11,6 +11,8 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- Auto-import every plugin spec in lua/plugins/. Add a new file there to add a plugin.
   { import = 'plugins' },
+  -- Local "plugins" written in this repo (no GitHub source).
+  { import = 'plugins.custom' },
 }, { ---@diagnostic disable-line: missing-fields
   ui = {
     -- Nerd Font icons by default; the fallback table is used if you flip
