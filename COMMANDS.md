@@ -37,6 +37,20 @@ A few conventions used below:
 | n    | `<leader>E` | Open oil at the git repo root (cwd outside repos) |
 | n    | `-` | Open oil at parent directory (oil default) |
 
+### Daily notes
+| Mode | Key | Action |
+| :--- | :-- | :----- |
+| n    | `<leader>d` | Open today's daily note (`:DailyNote`) |
+| n    | `<leader>j` | Open quick-jot floating window (`:Jot`) |
+| n    | `<leader>sN` | Live-grep the notes repo |
+
+Inside the jot window:
+- Type your note (starts in insert mode)
+- `:w` or `<C-s>` → append to a `## Jot` section in today's note (timestamped `### HH:MM`)
+- `q` in normal mode → discard
+
+Note path: `~/faire/notes/daily_notes/<YYYY-MM>/<YYYY-MM-DD>.md`.
+
 Inside oil: edit the buffer like text, then `:w` commits moves/renames/deletes. `g?` for full oil help.
 
 ---

@@ -9,7 +9,10 @@ return {
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
-    opts = {},
+    opts = {
+      -- Show dotfiles/folders by default. Toggle at runtime with `g.` inside oil.
+      view_options = { show_hidden = true },
+    },
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     -- Loaded eagerly so opening nvim on a directory hands off to oil.
     lazy = false,

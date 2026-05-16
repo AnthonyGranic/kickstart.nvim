@@ -6,5 +6,6 @@ require 'config.keymaps'
 require 'config.autocmds'
 require 'config.diagnostics'
 require 'config.lazy'
+require 'config.daily_notes'
 
 -- vim: ts=2 sts=2 sw=2 et
