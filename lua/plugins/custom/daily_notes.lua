@@ -4,9 +4,10 @@
 -- here — lazy merges specs that share `dir`, so two fake-plugins both pointing
 -- there silently collapse into one.
 --
---   <leader>d  / :DailyNote — open today's note
---   <leader>j  / :Jot       — floating window that appends to a `## Jot` section
---   <leader>sN              — live-grep the notes repo
+--   <leader>d  / :DailyNote   — open today's note
+--   <leader>j  / :Jot         — floating window that appends to a `## Jot` section
+--   :Jot <text>               — append <text> directly, no window
+--   <leader>sN                — live-grep the notes repo
 -- Today's note path: <repo>/daily_notes/<YYYY-MM>/<YYYY-MM-DD>.md
 
 ---@module 'lazy'
@@ -129,7 +130,16 @@ return {
       end
 
       vim.api.nvim_create_user_command('DailyNote', open_today, { desc = "Open today's daily note" })
-      vim.api.nvim_create_user_command('Jot', open_jot_window, { desc = "Quick-jot to today's note" })
+      -- `:Jot` with no args opens the floating window; `:Jot some text` appends
+      -- `some text` straight to the Jot section without opening a buffer.
+      vim.api.nvim_create_user_command('Jot', function(opts)
+        if opts.args == '' then
+          open_jot_window()
+        else
+          append_jot(opts.args)
+          vim.notify('Jotted', vim.log.levels.INFO)
+        end
+      end, { nargs = '*', desc = "Quick-jot to today's note (no args: floating window; with args: append directly)" })
 
       vim.keymap.set('n', '<leader>d', open_today, { desc = "Open today's [D]aily note" })
       vim.keymap.set('n', '<leader>j', open_jot_window, { desc = '[J]ot to today’s note' })

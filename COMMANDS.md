@@ -44,7 +44,7 @@ A few conventions used below:
 | n    | `<leader>j` | Open quick-jot floating window (`:Jot`) |
 | n    | `<leader>sN` | Live-grep the notes repo |
 
-Inside the jot window:
+`:Jot <text>` appends `<text>` straight to today's note (no window). Bare `:Jot` opens the floating window:
 - Type your note (starts in insert mode)
 - `:w` or `<C-s>` → append to a `## Jot` section in today's note (timestamped `### HH:MM`)
 - `q` in normal mode → discard
