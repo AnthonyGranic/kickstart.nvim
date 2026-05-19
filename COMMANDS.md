@@ -163,6 +163,27 @@ Lua files are formatted via `stylua`.
 
 ---
 
+## Claude Code (`<leader>a…`)
+
+Wraps [`coder/claudecode.nvim`](https://github.com/coder/claudecode.nvim) — runs the `claude` CLI in a split terminal and lets Claude see your buffer, selections, and diagnostics over its WebSocket/MCP protocol.
+
+| Mode | Key | Action |
+| :--- | :-- | :----- |
+| n    | `<leader>ac` | Toggle Claude terminal (`:ClaudeCode`) |
+| n    | `<leader>af` | Focus the Claude terminal |
+| n    | `<leader>ar` | Resume a session (`claude --resume`) |
+| n    | `<leader>aC` | Continue last session (`claude --continue`) |
+| n    | `<leader>am` | Select Claude model |
+| n    | `<leader>ab` | Add current buffer to Claude's context |
+| v    | `<leader>as` | Send selection to Claude |
+| n    | `<leader>as` | In oil/nvim-tree/neo-tree/minifiles/netrw: add file under cursor |
+| n    | `<leader>aa` | Accept proposed diff |
+| n    | `<leader>ad` | Deny proposed diff |
+
+Requires the `claude` CLI on `$PATH`. `:ClaudeCodeAdd <path> [start] [end]` adds a file (optionally a line range) directly.
+
+---
+
 ## Trouble (`<leader>x…` for lists, `<leader>c…` for code)
 
 | Mode | Key | Action |
@@ -235,6 +256,8 @@ Uses `kotlin-lsp` (JetBrains) via Mason. Standard LSP keymaps apply (`grd`, `grr
 | `:checkhealth`     | Run all health checks (`:checkhealth kotlin`, `lazy`, etc.) |
 | `:Telescope`       | List all Telescope pickers |
 | `:Oil`             | Open the file explorer at cwd |
+| `:ClaudeCode`      | Toggle Claude Code terminal (see Claude section) |
+| `:ClaudeCodeSend`  | Send visual selection to Claude |
 | `:Trouble`         | Open the Trouble list (`:Trouble diagnostics`, etc.) |
 | `:ConformInfo`     | Show conform.nvim status / configured formatters |
 | `:TodoTelescope`   | Telescope picker over TODO/NOTE/FIX comments |

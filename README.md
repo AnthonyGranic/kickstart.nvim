@@ -22,6 +22,7 @@ Personal Neovim configuration. Forked from [kickstart.nvim](https://github.com/n
 │   │   ├── diagnostics.lua  # vim.diagnostic.config
 │   │   └── lazy.lua         # lazy.nvim bootstrap + setup
 │   └── plugins/             # One file per plugin / tight group
+│       ├── claudecode.lua   # Claude Code IDE integration (coder/claudecode.nvim)
 │       ├── colorscheme.lua  # tokyonight + moonfly
 │       ├── completion.lua   # blink.cmp + LuaSnip
 │       ├── formatting.lua   # conform.nvim
