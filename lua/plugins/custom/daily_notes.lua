@@ -1,6 +1,8 @@
--- Daily-note shortcuts. Not a real plugin — wrapped as a local lazy.nvim
--- spec (`dir = stdpath('config')`) so it lives alongside the other plugin
--- entries and gets picked up by `{ import = 'plugins' }`.
+-- Daily-note shortcuts. Not a real plugin — wrapped as a `virtual = true`
+-- lazy.nvim spec so it lives alongside the other plugin entries and gets
+-- picked up by `{ import = 'plugins.custom' }`. Don't use `dir = stdpath('config')`
+-- here — lazy merges specs that share `dir`, so two fake-plugins both pointing
+-- there silently collapse into one.
 --
 --   <leader>d  / :DailyNote — open today's note
 --   <leader>j  / :Jot       — floating window that appends to a `## Jot` section
@@ -12,7 +14,7 @@
 return {
   {
     'daily-notes',
-    dir = vim.fn.stdpath 'config',
+    virtual = true,
     lazy = false,
     config = function()
       -- Canonical notes repo location. Update if you move the repo.

@@ -1,6 +1,6 @@
--- Floating zsh terminal. Not a real plugin — wrapped as a local lazy.nvim
--- spec (`dir = stdpath('config')`) so it lives alongside the other plugin
--- entries and gets picked up by `{ import = 'plugins' }`.
+-- Floating zsh terminal. Not a real plugin — wrapped as a `virtual = true`
+-- lazy.nvim spec so it lives alongside the other plugin entries and gets
+-- picked up by `{ import = 'plugins.custom' }`.
 --
 --   <leader>z  / :ZshTerm — toggle a floating interactive login zsh
 --
@@ -14,7 +14,7 @@
 return {
   {
     'zsh-term',
-    dir = vim.fn.stdpath 'config',
+    virtual = true,
     lazy = false,
     config = function()
       local state = { buf = nil, win = nil }
