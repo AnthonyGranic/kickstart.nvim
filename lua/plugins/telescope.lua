@@ -40,9 +40,13 @@ return {
       map('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       map({ 'n', 'v' }, '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       map('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      -- Capital variants include hidden + gitignored files for those rare "where the hell
+      -- did I put that .env example" moments.
+      map('n', '<leader>sF', function() builtin.find_files { hidden = true, no_ignore = true } end, { desc = '[S]earch [F]iles (incl. hidden + ignored)' })
+      map('n', '<leader>sG', function() builtin.live_grep { additional_args = { '--hidden', '--no-ignore' } } end, { desc = '[S]earch by [G]rep (incl. hidden + ignored)' })
       map('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       map('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      map('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      map('n', '<leader>s.', function() builtin.oldfiles { only_cwd = true } end, { desc = '[S]earch Recent Files ("." for repeat)' })
       map('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
       map('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       -- Project-aware file picker — only shows files tracked by git.

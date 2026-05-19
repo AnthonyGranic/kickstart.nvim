@@ -32,3 +32,6 @@ map('n', '<leader>E', function()
   if vim.v.shell_error ~= 0 then git_root = vim.loop.cwd() end
   vim.cmd('Oil ' .. git_root)
 end, { desc = 'Open file explorer at git root' })
+
+-- Floating zsh terminal — see lua/plugins/custom/zsh_term.lua.
+map('n', '<leader>z', '<cmd>ZshTerm<CR>', { desc = 'Toggle floating [z]sh terminal' })

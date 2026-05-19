@@ -36,11 +36,11 @@ return {
       completion = {
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
-      sources = { default = { 'lsp', 'path', 'snippets' } },
+      sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
       snippets = { preset = 'luasnip' },
-      -- 'lua' implementation is the safe default. Switch to
-      -- 'prefer_rust_with_warning' if you want the (faster) Rust fuzzy matcher.
-      fuzzy = { implementation = 'lua' },
+      -- Prefer the Rust fuzzy matcher (much faster); fall back to the Lua
+      -- implementation with a one-time warning if the prebuilt binary isn't available.
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
       signature = { enabled = true },
     },
   },

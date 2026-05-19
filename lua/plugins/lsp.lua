@@ -22,6 +22,8 @@ return {
         ---@diagnostic disable-next-line: missing-fields
         opts = {},
       },
+      -- Required so mason-tool-installer can resolve lspconfig names
+      -- (e.g. `lua_ls`) to Mason package names (`lua-language-server`).
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Floating "LSP is doing work…" indicators in the corner.

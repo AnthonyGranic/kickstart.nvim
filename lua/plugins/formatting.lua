@@ -22,7 +22,7 @@ return {
       notify_on_error = false,
       -- Opt-in per-filetype auto-formatting on save.
       format_on_save = function(bufnr)
-        local enabled_filetypes = { go = true }
+        local enabled_filetypes = { go = true, lua = true }
         if enabled_filetypes[vim.bo[bufnr].filetype] then return { timeout_ms = 500 } end
         return nil
       end,
