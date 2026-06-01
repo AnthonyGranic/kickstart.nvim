@@ -46,6 +46,18 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10 -- keep 10 lines visible above/below cursor
 vim.o.confirm = true -- prompt to save instead of erroring on :q with unsaved changes
 
--- Clipboard: share with the OS clipboard. Scheduled after UiEnter
--- because looking up the system clipboard provider slows startup.
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+-- Clipboard: OSC 52 lets the terminal forward yanks to the host clipboard
+-- over SSH, so no xclip/pbcopy is needed on this remote box. We deliberately
+-- do NOT set clipboard=unnamedplus — plain `y` stays in the unnamed register;
+-- only explicit `"+y` / `"+p` (or `"*`) crosses to the system clipboard.
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+    ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+  },
+}

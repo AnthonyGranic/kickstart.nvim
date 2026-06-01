@@ -16,7 +16,14 @@ return {
   {
     'coder/claudecode.nvim',
     dependencies = { 'folke/snacks.nvim' },
-    config = true,
+    -- Open diffs in their own tab so the original window is preserved; <leader>aa/ad
+    -- closes the diff tab and returns to it. (Plugin has no floating-diff layout.)
+    opts = {
+      diff_opts = {
+        open_in_new_tab = true,
+        hide_terminal_in_new_tab = true,
+      },
+    },
     keys = {
       { '<leader>a', nil, desc = '[A]I/Claude Code' },
       { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Claude: toggle' },

@@ -51,6 +51,7 @@ return {
       map('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       -- Project-aware file picker — only shows files tracked by git.
       map('n', '<leader>sp', builtin.git_files, { desc = '[S]earch in Git [P]roject' })
+      map('n', '<leader>su', builtin.git_status, { desc = '[S]earch Git Status ([u]nstaged + untracked)' })
 
       -- LSP-driven pickers, bound when an LSP attaches to the buffer.
       vim.api.nvim_create_autocmd('LspAttach', {

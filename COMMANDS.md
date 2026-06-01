@@ -25,10 +25,18 @@ A few conventions used below:
 ### Window navigation
 | Mode | Key | Action |
 | :--- | :-- | :----- |
-| n    | `<C-h>` | Focus left window |
-| n    | `<C-j>` | Focus lower window |
-| n    | `<C-k>` | Focus upper window |
-| n    | `<C-l>` | Focus right window |
+| n,t  | `<C-h>` | Focus left window |
+| n,t  | `<C-j>` | Focus lower window |
+| n,t  | `<C-k>` | Focus upper window |
+| n,t  | `<C-l>` | Focus right window |
+
+In terminal mode these hop out of the PTY first (`<C-\><C-n>`) so they work from inside a running terminal.
+
+### Scrolling
+| Mode | Key | Action |
+| :--- | :-- | :----- |
+| n    | `<C-d>` | Scroll down half a page and center cursor (`<C-d>zz`) |
+| n    | `<C-u>` | Scroll up half a page and center cursor (`<C-u>zz`) |
 
 ### File explorer (oil.nvim)
 | Mode | Key | Action |
@@ -74,6 +82,7 @@ Inside oil: edit the buffer like text, then `:w` commits moves/renames/deletes. 
 | n    | `<leader>ss` | Pick a Telescope picker |
 | n    | `<leader>sr` | Resume last Telescope session |
 | n    | `<leader>sn` | Find files in `~/.config/nvim` |
+| n    | `<leader>su` | Git status (unstaged + untracked files) |
 
 ---
 
@@ -226,6 +235,16 @@ Targets work with any operator (`d`, `c`, `y`, `v`, …):
 | `sr{old}{new}` | Surround replace |
 | `sf` / `sF` | Find next/previous surrounding character |
 | `sh` | Highlight surrounding |
+
+---
+
+## Markdown rendering (render-markdown.nvim)
+
+In-place pretty-printing of markdown buffers: heading backgrounds, list bullets, tinted code fences, drawn tables.
+
+| Mode | Key | Action |
+| :--- | :-- | :----- |
+| n    | `<leader>tm` | Toggle markdown rendering (`:RenderMarkdown toggle`) |
 
 ---
 

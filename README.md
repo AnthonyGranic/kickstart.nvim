@@ -29,6 +29,7 @@ Personal Neovim configuration. Forked from [kickstart.nvim](https://github.com/n
 │       ├── git.lua          # gitsigns + hunk keymaps
 │       ├── kotlin.lua       # kotlin.nvim (kotlin-lsp via JetBrains)
 │       ├── lsp.lua          # nvim-lspconfig + mason + fidget
+│       ├── markdown.lua     # render-markdown.nvim (in-place markdown rendering)
 │       ├── mini.lua         # mini.ai / mini.surround / mini.statusline
 │       ├── oil.lua          # File explorer (edit fs as a buffer)
 │       ├── telescope.lua    # Fuzzy finder + extensions

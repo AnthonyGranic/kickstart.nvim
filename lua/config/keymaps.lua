@@ -24,6 +24,16 @@ map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Same window focus from Terminal mode: hop out of the PTY first.
+map('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move focus to the left window' })
+map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the right window' })
+map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the lower window' })
+map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the upper window' })
+
+-- Half-page scroll, keeping the cursor line centered.
+map('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down half a page and center' })
+map('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up half a page and center' })
+
 -- File explorer (oil). <leader>e opens it at the current file's directory,
 -- <leader>E opens it at the git repo root (falling back to cwd outside repos).
 map('n', '<leader>e', ':Oil<CR>', { desc = 'Open file explorer at current' })
