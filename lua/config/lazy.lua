@@ -14,6 +14,9 @@ require('lazy').setup({
   -- Local "plugins" written in this repo (no GitHub source).
   { import = 'plugins.custom' },
 }, { ---@diagnostic disable-line: missing-fields
+  -- No plugin here needs luarocks, so don't let lazy bootstrap hererocks just
+  -- to satisfy a dependency we never use (it only ever fails the healthcheck).
+  rocks = { enabled = false },
   ui = {
     -- Nerd Font icons by default; the fallback table is used if you flip
     -- vim.g.have_nerd_font to false.

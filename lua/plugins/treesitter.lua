@@ -12,6 +12,14 @@ return {
     build = ':TSUpdate',
     branch = 'main',
     config = function()
+      -- Parsers and queries live under stdpath('data')/site, which has to be on
+      -- the runtimepath for them to load. nvim puts it there by default, so only
+      -- register it explicitly if something (e.g. an rtp reset) dropped it —
+      -- passing install_dir unconditionally would just duplicate the rtp entry.
+      local install_dir = vim.fs.joinpath(vim.fn.stdpath 'data', 'site')
+      local rtp = vim.tbl_map(vim.fs.normalize, vim.api.nvim_list_runtime_paths())
+      if not vim.list_contains(rtp, install_dir) then require('nvim-treesitter').setup { install_dir = install_dir } end
+
       -- Parsers to keep installed for common filetypes.
       -- Other parsers auto-install on demand below (FileType autocmd).
       local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }

@@ -115,7 +115,9 @@ return {
       }
 
       -- Non-LSP tools to keep installed via Mason (formatters, linters, DAPs).
-      local tools = { 'stylua' }
+      -- tree-sitter-cli is required by nvim-treesitter's `main` branch to build
+      -- parsers; without it every :TSInstall fails with ENOENT 'tree-sitter'.
+      local tools = { 'stylua', 'tree-sitter-cli' }
 
       local ensure_installed = vim.tbl_keys(servers)
       vim.list_extend(ensure_installed, tools)
